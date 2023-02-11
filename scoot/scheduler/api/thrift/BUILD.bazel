@@ -1,0 +1,59 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "thrift",
+    srcs = [
+        "doc.go",
+        "errors.go",
+        "get_scheduler_status.go",
+        "get_status.go",
+        "kill_job.go",
+        "load_based_alg_settings.go",
+        "offline_worker.go",
+        "reinstate_worker.go",
+        "run_job.go",
+        "set_scheduler_status.go",
+    ],
+    importpath = "github.com/twitter/scoot/scoot/scheduler/api/thrift",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_twitter_scoot//common/stats:go_default_library",
+        "@com_github_twitter_scoot//common/thrifthelpers:go_default_library",
+        "@com_github_twitter_scoot//saga:go_default_library",
+        "@com_github_twitter_scoot//scheduler/api/thrift/gen-go/scoot:go_default_library",
+        "@com_github_twitter_scoot//scheduler/domain:go_default_library",
+        "@com_github_twitter_scoot//scheduler/server:go_default_library",
+        "@com_github_twitter_scoot//worker/domain/gen-go/worker:go_default_library",
+    ],
+)
+
+go_test(
+    name = "thrift_test",
+    srcs = [
+        "get_scheduler_status_test.go",
+        "get_status_property_test.go",
+        "get_status_test.go",
+        "kill_job_test.go",
+        "run_job_test.go",
+        "set_scheduler_status_test.go",
+        "translate_prop_test.go",
+    ],
+    embed = [":thrift"],
+    deps = [
+        "@com_github_golang_mock//gomock:go_default_library",
+        "@com_github_leanovate_gopter//:go_default_library",
+        "@com_github_leanovate_gopter//gen:go_default_library",
+        "@com_github_leanovate_gopter//prop:go_default_library",
+        "@com_github_sirupsen_logrus//:go_default_library",
+        "@com_github_twitter_scoot//common/stats:go_default_library",
+        "@com_github_twitter_scoot//common/thrifthelpers:go_default_library",
+        "@com_github_twitter_scoot//runner:go_default_library",
+        "@com_github_twitter_scoot//saga:go_default_library",
+        "@com_github_twitter_scoot//saga/sagalogs:go_default_library",
+        "@com_github_twitter_scoot//scheduler/api/thrift/gen-go/scoot:go_default_library",
+        "@com_github_twitter_scoot//scheduler/server:go_default_library",
+        "@com_github_twitter_scoot//tests/testhelpers:go_default_library",
+        "@com_github_twitter_scoot//worker/domain:go_default_library",
+        "@com_github_twitter_scoot//worker/domain/gen-go/worker:go_default_library",
+    ],
+)

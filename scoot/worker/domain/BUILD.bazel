@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "domain",
+    srcs = [
+        "addrs.go",
+        "api.go",
+    ],
+    importpath = "github.com/twitter/scoot/scoot/worker/domain",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_twitter_scoot//common/errors:go_default_library",
+        "@com_github_twitter_scoot//common/log/helpers:go_default_library",
+        "@com_github_twitter_scoot//common/log/tags:go_default_library",
+        "@com_github_twitter_scoot//common/thrifthelpers:go_default_library",
+        "@com_github_twitter_scoot//runner:go_default_library",
+        "@com_github_twitter_scoot//worker/domain/gen-go/worker:go_default_library",
+    ],
+)
+
+go_test(
+    name = "domain_test",
+    srcs = ["api_test.go"],
+    embed = [":domain"],
+    deps = [
+        "@com_github_twitter_scoot//common/errors:go_default_library",
+        "@com_github_twitter_scoot//common/log/tags:go_default_library",
+        "@com_github_twitter_scoot//runner:go_default_library",
+        "@com_github_twitter_scoot//worker/domain/gen-go/worker:go_default_library",
+    ],
+)

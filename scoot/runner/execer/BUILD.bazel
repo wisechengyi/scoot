@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "execer",
+    srcs = ["execer.go"],
+    importpath = "github.com/twitter/scoot/scoot/runner/execer",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_twitter_scoot//common/errors:go_default_library",
+        "@com_github_twitter_scoot//common/log/tags:go_default_library",
+    ],
+)

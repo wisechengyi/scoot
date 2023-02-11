@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "runner",
+    srcs = [
+        "controller.go",
+        "output.go",
+        "queries.go",
+        "runner.go",
+        "status.go",
+        "status_rw.go",
+    ],
+    importpath = "github.com/twitter/scoot/scoot/runner",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_twitter_scoot//common/errors:go_default_library",
+        "@com_github_twitter_scoot//common/log/tags:go_default_library",
+        "@com_github_twitter_scoot//snapshot:go_default_library",
+    ],
+)
+
+go_test(
+    name = "runner_test",
+    srcs = ["status_test.go"],
+    embed = [":runner"],
+    deps = ["@com_github_twitter_scoot//common/log/tags:go_default_library"],
+)

@@ -8,8 +8,11 @@ http_archive(
         "https://github.com/bazelbuild/rules_proto/archive/refs/tags/5.3.0-21.7.tar.gz",
     ],
 )
+
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
+
 rules_proto_dependencies()
+
 rules_proto_toolchains()
 
 http_archive(
@@ -39,15 +42,13 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 # The first declaration of an external repository "wins".
 ############################################################
 
-load("//:deps.bzl", "go_dependencies")
+load("//:deps.bzl", "go_repositories")
 
-# gazelle:repository_macro deps.bzl%go_dependencies
-go_dependencies()
+# gazelle:repository_macro deps.bzl%go_repositories
+go_repositories()
 
 go_rules_dependencies()
 
 go_register_toolchains(version = "1.19.5")
 
 gazelle_dependencies()
-
-
