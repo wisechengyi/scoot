@@ -2,6 +2,7 @@ module github.com/twitter/scoot
 
 go 1.13
 
+
 require (
 	github.com/apache/thrift v0.0.0-20160616201512-0e9fed1e12ed
 	github.com/davecgh/go-spew v1.1.1
