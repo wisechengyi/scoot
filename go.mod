@@ -1,6 +1,6 @@
 module github.com/twitter/scoot
 
-go 1.13
+go 1.19
 
 require (
 	github.com/apache/thrift v0.0.0-20160616201512-0e9fed1e12ed
