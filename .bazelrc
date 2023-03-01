@@ -1,1 +1,2 @@
 test --test_output=errors
+build --disk_cache=~/.cache/bazel/
