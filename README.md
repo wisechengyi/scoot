@@ -10,10 +10,11 @@ Scoot allows for execution of commands against input Snapshots to create new out
 
 ### Build with Bazel
 
+Currently one can use either the vanilla go toolchain or the bazel build system to run the binaries or tests.
+
 ```
 bazel test ...
 ```
-is expected to work.
 
 ### Scoot Components
 
