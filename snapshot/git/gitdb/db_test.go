@@ -520,7 +520,7 @@ func createRepo(tmp string, name string) (*repo.Repository, error) {
 		return nil, err
 	}
 
-	cmd := exec.Command("git", "init")
+	cmd := exec.Command("git", "init", "--initial-branch=master")
 	cmd.Dir = dir
 	err = cmd.Run()
 	if err != nil {
