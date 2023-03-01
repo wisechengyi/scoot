@@ -17,7 +17,15 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/twitter/groupcache v0.0.0-20191021194929-8215cbf3be0f
 	golang.org/x/net v0.6.0
+)
 
-
+require (
 	github.com/golang/protobuf v1.5.2 // indirect
+	github.com/inconshreveable/mousetrap v1.0.0 // indirect
+	github.com/konsorten/go-windows-terminal-sequences v1.0.1 // indirect
+	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/spf13/pflag v1.0.3 // indirect
+	golang.org/x/sys v0.5.0 // indirect
+	google.golang.org/protobuf v1.26.0 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )
