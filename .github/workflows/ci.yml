@@ -21,14 +21,11 @@ jobs:
       - name: Cache go modules
         uses: actions/cache@v2
         with:
-          path: ~/go/pkg/mod
+          path: |
+            ~/go/pkg/mod
+            ~/.cache/bazel
           key: ${{ runner.os }}-go-${{ hashFiles('go.sum') }}
           restore-keys: ${{ runner.os }}-go-
-      - name: Cache go bazel modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/bazel
-          restore-keys: ${{ runner.os }}-go-bazel
       - name: Bazel test
         run: bash scripts/test_bazel.sh
       - name: Check fmt
