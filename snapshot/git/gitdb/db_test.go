@@ -520,6 +520,7 @@ func createRepo(tmp string, name string) (*repo.Repository, error) {
 		return nil, err
 	}
 
+	// Newer version of git has default init branch being 'main', breaking some of the test assumptions.
 	cmd := exec.Command("git", "init", "--initial-branch=master")
 	cmd.Dir = dir
 	err = cmd.Run()
